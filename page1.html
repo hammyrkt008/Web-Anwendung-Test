@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulaire Inscription</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f9fc;
+            display: flex;
+            justify-content: center;
+            padding-top: 50px;
+        }
+        .container {
+            background: white;
+            padding: 24px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            width: 320px;
+        }
+        h2 { margin-top: 0; color: #333; }
+        .row { margin-bottom: 14px; }
+        label { display: block; margin-bottom: 4px; font-weight: bold; font-size: 14px; }
+        input[type="text"], select {
+            width: 100%;
+            padding: 7px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 8px;
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        button:hover { background-color: #004c99; }
+        #message { margin-top: 15px; font-weight: bold; color: green; }
+        a { color: #0066cc; text-decoration: none; font-size: 13px; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2 id="heading">Inscription</h2>
+
+    <!-- Lien obligatoire vers la deuxième page -->
+    <div class="row">
+        <a href="confirmation.html" id="link_confirmation">Aller à la page de confirmation</a>
+    </div>
+
+    <!-- Champ texte avec son Label -->
+    <div class="row">
+        <label for="input_nom">Nom d'utilisateur :</label>
+        <input type="text" id="input_nom" placeholder="Ex: Jean">
+    </div>
+
+    <!-- Élément d'entrée 1 : Combobox / Select -->
+    <div class="row">
+        <label for="select_ville">Ville :</label>
+        <select id="select_ville">
+            <option value="Paris">Paris</option>
+            <option value="Berlin">Berlin</option>
+            <option value="Metz">Metz</option>
+        </select>
+    </div>
+
+    <!-- Élément d'entrée 2 : Checkbox -->
+    <div class="row">
+        <label style="font-weight: normal; cursor: pointer;">
+            <input type="checkbox" id="checkbox_newsletter"> S'abonner aux alertes
+        </label>
+    </div>
+
+    <!-- Bouton d'action avec JavaScript inline -->
+    <button id="button_valider" onclick="afficherResultat()">Valider</button>
+
+    <!-- Zone de texte résultante pour les tests d'assertion Playwright -->
+    <p id="message"></p>
+</div>
+
+<script>
+    function afficherResultat() {
+        var nom = document.getElementById("input_nom").value;
+        var ville = document.getElementById("select_ville").value;
+        document.getElementById("message").innerText = "Inscription enregistree pour " + nom + " a " + ville + " !";
+    }
+</script>
+
+</body>
+</html>
