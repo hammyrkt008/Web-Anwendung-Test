@@ -1,4 +1,3 @@
-import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.SelectOption;
 
@@ -16,6 +15,7 @@ public class IndexPageObjectModel extends AbstractPageObjectModel {
     private static final String BUTTON_VALIDER = "#button_valider";
     private static final String MESSAGE_RESULTAT = "#message";
     private static final String LINK_CONFIRMATION = "#link_confirmation";
+    private static final String HEADING = "#heading";
 
     // 2. Constructeur reprenant le modèle d'héritage d'AbstractPageObjectModel
     public IndexPageObjectModel(Page page) {
@@ -56,6 +56,10 @@ public class IndexPageObjectModel extends AbstractPageObjectModel {
 
     public String recupererMessage() {
         return page.locator(MESSAGE_RESULTAT).innerText();
+    }
+
+    public String getHeadingText() {
+        return page.locator(HEADING).innerText();
     }
 
     // 5. Transition vers la deuxième page (retourne le Page Object suivant)
