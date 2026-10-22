@@ -7,7 +7,7 @@ import com.microsoft.playwright.options.SelectOption;
  */
 public class IndexPageObjectModel extends AbstractPageObjectModel {
 
-    // 1. Définition des sélecteurs (IDs de la page index.html)
+    //selector IDs index.html
     private static final String RELATIVE_URL = "/src/main/webapp/index.html";
     private static final String INPUT_NOM = "#input_nom";
     private static final String SELECT_VILLE = "#select_ville";
@@ -17,19 +17,19 @@ public class IndexPageObjectModel extends AbstractPageObjectModel {
     private static final String LINK_CONFIRMATION = "#link_confirmation";
     private static final String HEADING = "#heading";
 
-    // 2. Constructeur reprenant le modèle d'héritage d'AbstractPageObjectModel
+    // constructor for abstractPageObjectModel
     public IndexPageObjectModel(Page page) {
         super(page);
     }
 
-    // 3. Méthode d'ouverture de l'URL locale en file:///
+    // local  url file:///
     public void open() {
         String projectRoot = getProjectRoot();
         String url = "file:///" + projectRoot + RELATIVE_URL;
         page.navigate(url);
     }
 
-    // 4. Actions d'interaction (champs, liste déroulante, case à cocher, bouton)
+    // interaction methods
     public void saisirNom(String nom) {
         page.locator(INPUT_NOM).fill(nom);
     }
@@ -62,7 +62,7 @@ public class IndexPageObjectModel extends AbstractPageObjectModel {
         return page.locator(HEADING).innerText();
     }
 
-    // 5. Transition vers la deuxième page (retourne le Page Object suivant)
+    // to next page ConfirmationPageObjectModel
     public ConfirmationPageObjectModel cliquerVersConfirmation() {
         page.locator(LINK_CONFIRMATION).click();
         return new ConfirmationPageObjectModel(page);

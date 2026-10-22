@@ -6,7 +6,7 @@ import com.microsoft.playwright.Page;
  */
 public class ConfirmationPageObjectModel extends AbstractPageObjectModel {
 
-    // 1. Définition des sélecteurs de confirmation.html
+    //selector confirmation.html
     private static final String RELATIVE_URL = "/src/main/webapp/confirmation.html";
     private static final String HEADING = "#confirmation_heading";
     private static final String TEXT = "#confirmation_text";
