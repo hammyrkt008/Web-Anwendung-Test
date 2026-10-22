@@ -17,7 +17,7 @@ public class ConfirmationPageObjectModel extends AbstractPageObjectModel {
         super(page);
     }
 
-    //Méthode d'ouverture directe (optionnelle, utile pour tester la page isolément)
+    //Directly open confirmation.html page
     public void open() {
         String projectRoot = getProjectRoot();
         String url = "file:///" + projectRoot + RELATIVE_URL;

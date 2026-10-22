@@ -86,8 +86,14 @@
 
 <script>
     function afficherResultat() {
-        var nom = document.getElementById("input_nom").value;
+        var nom = document.getElementById("input_nom").value.trim();
         var ville = document.getElementById("select_ville").value;
+        
+        if (nom === "") {
+            document.getElementById("message").innerText = "Veuillez remplir tous les champs obligatoires !";
+            return;
+        }
+
         document.getElementById("message").innerText = "Inscription enregistree pour " + nom + " a " + ville + " !";
     }
 </script>

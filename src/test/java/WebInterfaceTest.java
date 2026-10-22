@@ -88,6 +88,40 @@ public class WebInterfaceTest extends PlaywrightAbstractTester {
         assertEquals("Inscription enregistree pour Bob a Metz !", index.recupererMessage());
         org.junit.jupiter.api.Assertions.assertFalse(index.isNewsletterChecked());
     }*/
+    
+    /*
+     * -------------------------------------------------------------------------
+     * PARTNER CONTRIBUTION (WORK IN PROGRESS)
+     * Feature: Form validation and error handling
+     * Scenario: TC2c - Submission failure due to missing mandatory username
+     *   Given the user opens the registration form
+     *   When the user selects the city "Berlin"
+     *     And leaves the username input field empty
+     *     And clicks the submit button
+     *   Then an error message "Veuillez remplir tous les champs obligatoires !" is displayed
+     *     And the user remains on the index page
+     * -------------------------------------------------------------------------
+     * NOTE: Implemented for the pair-programming part. Functional logic is ready,
+     * but pending joint integration testing before activation.
+     * -------------------------------------------------------------------------
+    @Test
+    @DisplayName("TC2c - Error display on submission with missing username")
+    void tc2c_missingUsernameError() {
+        // Given
+        IndexPageObjectModel indexPage = new IndexPageObjectModel(page);
+        indexPage.open();
+
+        // When
+        indexPage.selectionnerVille("Berlin");
+        indexPage.cliquerValider();
+
+        // Then
+        assertEquals("Veuillez remplir tous les champs obligatoires !", indexPage.recupererMessage());
+        assertTrue(indexPage.getUrl().contains("index.html"));
+    }
+    */
+
+    
 
     /*
      * TC3: Navigation to the confirmation page (Forward link)
