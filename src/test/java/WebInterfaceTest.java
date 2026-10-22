@@ -66,22 +66,11 @@ public class WebInterfaceTest extends PlaywrightAbstractTester {
         assertEquals("Inscription enregistree pour Alice a Berlin !", index.recupererMessage());
         // Additional check: the checkbox is indeed checked
         assertTrue(index.isNewsletterChecked());
-    }/*
-     * -------------------------------------------------------------------------
-     * PARTNER CONTRIBUTION (WORK IN PROGRESS)
-     * Feature: Registration form submission options
-     * Scenario: TC2b - Successful form submission without newsletter subscription
-     *   Given the user opens the registration form
-     *   When the user enters the name "Bob"
-     *     And selects the city "Metz"
-     *     And unchecks the newsletter checkbox
-     *     And clicks the submit button
-     *   Then a success message "Inscription enregistree pour Bob a Metz !" is displayed
-     *     And the newsletter checkbox remains unchecked
-     * -------------------------------------------------------------------------
-     * NOTE: Implemented for the pair-programming part. Functional logic is ready,
-     * but pending joint integration testing before activation.
-     * -------------------------------------------------------------------------
+    }
+        /*
+     * TC2b : Soumission sans abonnement aux alertes
+     */
+    /*
     @Test
     @DisplayName("TC2b - Soumission valide sans abonnement newsletter")
     void tc2b_soumissionSansNewsletter() {
@@ -98,8 +87,7 @@ public class WebInterfaceTest extends PlaywrightAbstractTester {
         // Then
         assertEquals("Inscription enregistree pour Bob a Metz !", index.recupererMessage());
         org.junit.jupiter.api.Assertions.assertFalse(index.isNewsletterChecked());
-    }
-    */
+    }*/
     
     /*
      * -------------------------------------------------------------------------
