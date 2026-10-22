@@ -67,6 +67,27 @@ public class WebInterfaceTest extends PlaywrightAbstractTester {
         // Additional check: the checkbox is indeed checked
         assertTrue(index.isNewsletterChecked());
     }
+        /*
+     * TC2b : Soumission sans abonnement aux alertes
+     */
+    /*
+    @Test
+    @DisplayName("TC2b - Soumission valide sans abonnement newsletter")
+    void tc2b_soumissionSansNewsletter() {
+        // Given
+        IndexPageObjectModel index = new IndexPageObjectModel(page);
+        index.open();
+
+        // When
+        index.saisirNom("Bob");
+        index.selectionnerVille("Metz");
+        index.decocherNewsletter();
+        index.cliquerValider();
+
+        // Then
+        assertEquals("Inscription enregistree pour Bob a Metz !", index.recupererMessage());
+        org.junit.jupiter.api.Assertions.assertFalse(index.isNewsletterChecked());
+    }*/
 
     /*
      * TC3: Navigation to the confirmation page (Forward link)
