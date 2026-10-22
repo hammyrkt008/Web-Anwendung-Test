@@ -15,7 +15,8 @@ public abstract class AbstractPageObjectModel {
     // Chemin du dossier du projet, ex: C:/Users/wea/Web-Anwendung-Test
     protected String getProjectRoot() {
         String root = System.getProperty("user.dir").replace("\\", "/");
-        if (root.startsWith("/")) {
+            // On ne retire le slash initial que s'il est suivi d'une lettre de lecteur Windows (ex: /C:)
+        if (root.matches("^/[a-zA-Z]:.*")) {
             root = root.substring(1);
         }
         return root;
