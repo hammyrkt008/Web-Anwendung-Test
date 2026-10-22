@@ -2,7 +2,7 @@ import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.SelectOption;
 
 /**
- * Modèle de page (Page Object Pattern) représentant index.html.
+ * represent index.html.
  * Encapsule les sélecteurs et les interactions utilisateur.
  */
 public class IndexPageObjectModel extends AbstractPageObjectModel {

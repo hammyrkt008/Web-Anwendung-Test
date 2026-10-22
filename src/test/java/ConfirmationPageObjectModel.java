@@ -1,7 +1,7 @@
 import com.microsoft.playwright.Page;
 
 /**
- * Modèle de page (Page Object Pattern) représentant confirmation.html.
+ * represent confirmation.html.
  * Inspiré de HelloPageObjectModel.java.
  */
 public class ConfirmationPageObjectModel extends AbstractPageObjectModel {
@@ -17,7 +17,7 @@ public class ConfirmationPageObjectModel extends AbstractPageObjectModel {
         super(page);
     }
 
-    // 3. Méthode d'ouverture directe (optionnelle, utile pour tester la page isolément)
+    //Méthode d'ouverture directe (optionnelle, utile pour tester la page isolément)
     public void open() {
         String projectRoot = getProjectRoot();
         String url = "file:///" + projectRoot + RELATIVE_URL;
