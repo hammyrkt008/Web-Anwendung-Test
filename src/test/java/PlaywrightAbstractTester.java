@@ -10,14 +10,14 @@ import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
 
 /**
- * Gestion du cycle de vie du navigateur pour tous les tests.
+ * Browser lifecycle management for all test cases.
  */
 public abstract class PlaywrightAbstractTester {
 
-    // Le mode headless fonctionne en CI ; utiliser -Dplaywright.headless=false pour l'affichage.
+    // Headless mode works in CI/Codespaces; pass -Dplaywright.headless=false to show the browser UI.
     private final static boolean headless =
         Boolean.parseBoolean(System.getProperty("playwright.headless", "true"));
-    private final static Integer setSlowMo = 1000;   // ralentit chaque action de 1000 ms
+    private final static Integer setSlowMo = 1000;   // Slows down each Playwright action by 1000 ms
 
     static Playwright playwright;
     static Browser browser;

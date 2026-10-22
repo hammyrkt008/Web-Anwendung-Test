@@ -4,25 +4,25 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 /**
- * Tests de l'interface web (index.html et confirmation.html).
- * Chaque test est documenté avec son scénario Gherkin.
+ * Web interface tests (index.html and confirmation.html).
+ * Each test case is documented with its Gherkin scenario.
  */
 public class WebInterfaceTest extends PlaywrightAbstractTester {
 
     /*
-     * TC1 : Vérification du titre et des éléments initiaux de la page d'accueil
-     * Priorité : Haute
+     * TC1: Verification of home page title and initial elements
+     * Priority: High
      *
-     * Feature: Chargement de la page d'accueil
-     * Scenario: La page principale affiche le titre attendu
-     *   Given la page index.html est ouverte dans le navigateur
-     *   When la page est entièrement chargée
-     *   Then le titre de l'onglet est "Formulaire Inscription"
-     *   And l'en-tête principal affiche "Inscription"
+     * Feature: Home page loading
+     * Scenario: The main page displays the expected title
+     *   Given the page index.html is opened in the browser
+     *   When the page is fully loaded
+     *   Then the tab title is "Formulaire Inscription"
+     *   And the main heading displays "Inscription"
      */
     @Test
-    @DisplayName("TC1 - Titre et en-tête de la page d'accueil")
-    void tc1_titreEtEnTetePageAccueil() {
+    @DisplayName("TC1 - Home page title and heading")
+    void tc1_homePageTitleAndHeading() {
         // Given / When
         IndexPageObjectModel index = new IndexPageObjectModel(page);
         index.open();
@@ -34,21 +34,21 @@ public class WebInterfaceTest extends PlaywrightAbstractTester {
     }
 
     /*
-     * TC2 : Soumission valide du formulaire d'inscription
-     * Priorité : Critique
+     * TC2: Valid registration form submission
+     * Priority: Critical
      *
-     * Feature: Soumission du formulaire
-     * Scenario: Saisie valide des informations utilisateur
-     *   Given la page index.html est ouverte dans le navigateur
-     *   When l'utilisateur saisit "Alice" dans le champ nom d'utilisateur
-     *   And sélectionne la ville "Berlin" dans la liste déroulante
-     *   And coche la case "S'abonner aux alertes"
-     *   And clique sur le bouton "Valider"
-     *   Then le message "Inscription enregistree pour Alice a Berlin !" est affiché à l'écran
+     * Feature: Form submission
+     * Scenario: Valid entry of user information
+     *   Given the page index.html is opened in the browser
+     *   When the user enters "Alice" in the username field
+     *   And selects the city "Berlin" from the dropdown list
+     *   And checks the "Subscribe to alerts" checkbox
+     *   And clicks the "Submit" button
+     *   Then the message "Inscription enregistree pour Alice a Berlin !" is displayed on screen
      */
     @Test
-    @DisplayName("TC2 - Soumission valide du formulaire d'inscription")
-    void tc2_soumissionFormulaireValide() {
+    @DisplayName("TC2 - Valid registration form submission")
+    void tc2_validFormSubmission() {
         // Given
         IndexPageObjectModel index = new IndexPageObjectModel(page);
         index.open();
@@ -64,25 +64,25 @@ public class WebInterfaceTest extends PlaywrightAbstractTester {
 
         // Then
         assertEquals("Inscription enregistree pour Alice a Berlin !", index.recupererMessage());
-        // Vérification complémentaire : la case est bien cochée
+        // Additional check: the checkbox is indeed checked
         assertTrue(index.isNewsletterChecked());
     }
 
     /*
-     * TC3 : Navigation vers la page de confirmation (Lien aller)
-     * Priorité : Haute
+     * TC3: Navigation to the confirmation page (Forward link)
+     * Priority: High
      *
-     * Feature: Navigation inter-pages
-     * Scenario: Redirection vers la page de confirmation
-     *   Given l'utilisateur est sur la page index.html
-     *   When il clique sur le lien "Aller à la page de confirmation"
-     *   Then la page confirmation.html s'ouvre
-     *   And le titre de la page devient "Confirmation"
-     *   And l'en-tête affiche "Page de confirmation"
+     * Feature: Inter-page navigation
+     * Scenario: Redirection to the confirmation page
+     *   Given the user is on the index.html page
+     *   When they click the link "Aller à la page de confirmation"
+     *   Then the page confirmation.html opens
+     *   And the page title becomes "Confirmation"
+     *   And the heading displays "Page de confirmation"
      */
     @Test
-    @DisplayName("TC3 - Navigation vers la page de confirmation")
-    void tc3_navigationVersConfirmation() {
+    @DisplayName("TC3 - Navigation to confirmation page")
+    void tc3_navigationToConfirmation() {
         // Given
         IndexPageObjectModel index = new IndexPageObjectModel(page);
         index.open();
@@ -99,19 +99,19 @@ public class WebInterfaceTest extends PlaywrightAbstractTester {
     }
 
     /*
-     * TC4 : Navigation retour vers l'accueil (Lien retour)
-     * Priorité : Moyenne
+     * TC4: Navigation back to home (Back link)
+     * Priority: Medium
      *
-     * Feature: Navigation de retour
-     * Scenario: Retour à l'accueil depuis la confirmation
-     *   Given l'utilisateur est sur la page confirmation.html
-     *   When il clique sur le lien "Retour à l'accueil"
-     *   Then la page index.html s'affiche à nouveau
-     *   And le titre de la page redevient "Formulaire Inscription"
+     * Feature: Backward navigation
+     * Scenario: Return to home from confirmation
+     *   Given the user is on the confirmation.html page
+     *   When they click the link "Retour à l'accueil"
+     *   Then the page index.html is displayed again
+     *   And the page title becomes "Formulaire Inscription" again
      */
     @Test
-    @DisplayName("TC4 - Retour à l'accueil depuis la confirmation")
-    void tc4_retourVersAccueil() {
+    @DisplayName("TC4 - Return to home from confirmation")
+    void tc4_returnToHome() {
         // Given
         ConfirmationPageObjectModel confirmation = new ConfirmationPageObjectModel(page);
         confirmation.open();
@@ -124,5 +124,5 @@ public class WebInterfaceTest extends PlaywrightAbstractTester {
         // And
         assertEquals("Formulaire Inscription", index.getTitle());
     }
-    
+
 }
