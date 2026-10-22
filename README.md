@@ -116,8 +116,8 @@ Feature: Navigation de retour
 ## 5. Prérequis et Exécution des Tests
 
 ### Prérequis
-* **Java JDK** : version 17 ou ultérieure recommandée
-* **Apache Maven** : version 3.8+
+* **Java JDK** : version 25 (LTS)
+* **Apache Maven** : version 3.9+
 * Accès Internet lors du tout premier lancement pour télécharger les binaires de navigateurs Playwright.
 
 ### Commandes utiles
@@ -138,10 +138,7 @@ Feature: Navigation de retour
    ```
 
 ### Configuration du mode d'affichage
-Pour observer l'exécution dans le navigateur en direct (mode visible) :
-* Ouvrir `PlaywrightAbstractTester.java`
-* Vérifier les paramètres :
-  ```java
-  private final static boolean headless = false; // Affiche la fenêtre du navigateur
-  private final static Integer setSlowMo = 500;  // Ralentit les actions de 500ms pour la démonstration
+Les tests utilisent le mode headless par défaut, ce qui permet de les exécuter sur les environnements CI sans serveur graphique. Pour observer l'exécution dans un navigateur visible, lancer Maven avec `-Dplaywright.headless=false` :
+  ```bash
+  mvn test -Dplaywright.headless=false
   ```

@@ -10,8 +10,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.source>17</maven.compiler.source>
-		<maven.compiler.target>17</maven.compiler.target>
+		<maven.compiler.release>25</maven.compiler.release>
 	</properties>
 
 	<dependencies>
@@ -39,11 +38,17 @@
 
 	<build>
 		<plugins>
+			<!-- Maven Compiler Plugin configured for the Java 25 release. -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.16.0</version>
+			</plugin>
 			<!-- Plugin Maven Surefire pour lancer les tests avec la commande 'mvn test' -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>3.1.2</version>
+				<version>3.6.0</version>
 			</plugin>
 		</plugins>
 	</build>

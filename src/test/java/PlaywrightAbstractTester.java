@@ -14,8 +14,9 @@ import com.microsoft.playwright.Playwright;
  */
 public abstract class PlaywrightAbstractTester {
 
-    // Mode d'affichage (voir README)
-    private final static boolean headless = false;  // false = fenêtre visible
+    // Le mode headless fonctionne en CI ; utiliser -Dplaywright.headless=false pour l'affichage.
+    private final static boolean headless =
+        Boolean.parseBoolean(System.getProperty("playwright.headless", "true"));
     private final static Integer setSlowMo = 1000;   // ralentit chaque action de 1000 ms
 
     static Playwright playwright;
