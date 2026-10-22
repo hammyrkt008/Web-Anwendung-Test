@@ -1,0 +1,33 @@
+       ┌────────────────────────────────────────────────┐
+       │             PlaywrightAbstractTester           │  (Browser lifecycle management)
+       │  - Playwright, Browser, BrowserContext, Page   │
+       │  - @BeforeAll, @BeforeEach, @AfterEach...      │
+       └───────────────────────▲────────────────────────┘
+                               │
+                       extends │  (Direct inheritance)
+                               │
+       ┌───────────────────────┴────────────────────────┐
+       │               WebInterfaceTest                 │  (JUnit 5 test suite)
+       │  - Test methods with @Test (TC1, TC2, TC3...)  │
+       └───────┬────────────────────────────────┬───────┘
+               │                                │
+  instantiates │                                │ instantiates
+   (new Index) │                                │ (new Confirmation)
+               ▼                                ▼
+┌──────────────────────────────┐    ┌───────────────────────────────────┐
+│     IndexPageObjectModel     │    │    ConfirmationPageObjectModel    │
+│ - Selectors (#nom, #ville...)│    │ - Selectors (#summary...)         │
+│ - Form action methods        │    │ - Verification / reading methods  │
+└──────────────┬───────────────┘    └─────────────────┬─────────────────┘
+               │                                      │
+               └──────────────────┬───────────────────┘
+                                  │
+                          extends │  (Common inheritance)
+                                  │
+       ┌──────────────────────────┴─────────────────────┐
+       │             AbstractPageObjectModel            │  (Base Page Object class)
+       │  - protected Page page;                        │
+       │  - getProjectRoot()                            │
+       │  - getTitle()                                  │
+       │  - getUrl()                                    │
+       └────────────────────────────────────────────────┘

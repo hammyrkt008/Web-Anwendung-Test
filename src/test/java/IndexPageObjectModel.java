@@ -22,7 +22,7 @@ public class IndexPageObjectModel extends AbstractPageObjectModel {
         super(page);
     }
 
-    // local  url file:///
+    // local  url file:/// Si l'arborescence du projet change (par exemple si les pages sont déplacées dans /src/main/resources/templates/index.html), vous ne fouillez pas dans le corps des méthodes. Vous modifiez uniquement la constante RELATIVE_URL à la ligne correspondante.
     public void open() {
         String projectRoot = getProjectRoot();
         String url = "file:///" + projectRoot + RELATIVE_URL;
