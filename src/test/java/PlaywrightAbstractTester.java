@@ -15,7 +15,7 @@ import com.microsoft.playwright.Playwright;
 public abstract class PlaywrightAbstractTester {
 
     // Mode d'affichage (voir README)
-    private final static boolean headless = true;  // false = fenêtre visible
+    private final static boolean headless = false;  // false = fenêtre visible
     private final static Integer setSlowMo = 1000;   // ralentit chaque action de 1000 ms
 
     static Playwright playwright;
