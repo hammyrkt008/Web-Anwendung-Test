@@ -12,7 +12,7 @@ public class ConfirmationPageObjectModel extends AbstractPageObjectModel {
     private static final String TEXT = "#confirmation_text";
     private static final String LINK_BACK = "#link_back";
 
-    // 2. Constructeur reprenant le modèle d'héritage d'AbstractPageObjectModel
+    // Constructor for abstractPageObjectModel
     public ConfirmationPageObjectModel(Page page) {
         super(page);
     }
@@ -24,7 +24,7 @@ public class ConfirmationPageObjectModel extends AbstractPageObjectModel {
         page.navigate(url);
     }
 
-    // 4. Méthodes d'inspection du contenu de la page
+    //inspection content
     public String getHeadingText() {
         return page.locator(HEADING).innerText();
     }
@@ -33,7 +33,7 @@ public class ConfirmationPageObjectModel extends AbstractPageObjectModel {
         return page.locator(TEXT).innerText();
     }
 
-    // 5. Navigation retour vers la première page (renvoie IndexPageObjectModel)
+    // return button to IndexPageObjectModel
     public IndexPageObjectModel cliquerRetour() {
         page.locator(LINK_BACK).click();
         return new IndexPageObjectModel(page);
