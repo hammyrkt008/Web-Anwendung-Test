@@ -45,9 +45,6 @@ public class IndexPageObjectModel extends AbstractPageObjectModel {
     public void decocherNewsletter() {
         page.locator(CHECKBOX_NEWSLETTER).uncheck();
     }
-    public String getHeadingText() {
-        return page.locator("#heading").innerText();
-    }
 
     public boolean isNewsletterChecked() {
         return page.locator(CHECKBOX_NEWSLETTER).isChecked();
