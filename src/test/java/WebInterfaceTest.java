@@ -84,7 +84,6 @@ public class WebInterfaceTest extends PlaywrightAbstractTester {
         assertTrue(index.isNewsletterChecked());
     }/*
      * -------------------------------------------------------------------------
-     * PARTNER CONTRIBUTION (WORK IN PROGRESS)
      * Feature: Registration form submission options
      * Scenario: TC2b - Successful form submission without newsletter subscription
      *   Given the user opens the registration form
@@ -94,9 +93,6 @@ public class WebInterfaceTest extends PlaywrightAbstractTester {
      *     And clicks the submit button
      *   Then a success message "Inscription enregistree pour Bob a Metz !" is displayed
      *     And the newsletter checkbox remains unchecked
-     * -------------------------------------------------------------------------
-     * NOTE: Implemented for the pair-programming part. Functional logic is ready,
-     * but pending joint integration testing before activation.
      * -------------------------------------------------------------------------
      * */
     @Test
