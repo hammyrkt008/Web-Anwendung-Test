@@ -1,6 +1,5 @@
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.DisplayName;
@@ -21,8 +20,7 @@ public class WebInterfaceTest extends PlaywrightAbstractTester {
     private static final String RED = "rgb(255, 0, 0)";
 
     private static final String ERROR_MESSAGE = "Veuillez remplir tous les champs obligatoires !";
-    private static final String ALERTS_ON = "Vous recevrez nos alertes.";
-    private static final String ALERTS_OFF = "Vous ne recevrez pas d'alertes.";
+   
 
     /*
      * TC1: Verification of home page title and initial elements
