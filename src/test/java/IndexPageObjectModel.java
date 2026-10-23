@@ -16,6 +16,7 @@ public class IndexPageObjectModel extends AbstractPageObjectModel {
     private static final String MESSAGE_RESULTAT = "#message";
     private static final String LINK_CONFIRMATION = "#link_confirmation";
     private static final String HEADING = "#heading";
+    private static final String MESSAGE_ALERTES = "#message_alertes";
 
     // constructor for abstractPageObjectModel
     public IndexPageObjectModel(Page page) {
@@ -56,6 +57,22 @@ public class IndexPageObjectModel extends AbstractPageObjectModel {
 
     public String recupererMessage() {
         return page.locator(MESSAGE_RESULTAT).innerText();
+    }
+
+    // Message shown below the result, depending on the checkbox state
+    public String recupererMessageAlertes() {
+        return page.locator(MESSAGE_ALERTES).innerText();
+    }
+
+    // Computed CSS color of the result message, e.g. "rgb(255, 0, 0)" for red
+    public String getMessageColor() {
+        return (String) page.locator(MESSAGE_RESULTAT)
+            .evaluate("el => getComputedStyle(el).color");
+    }
+
+    // Currently selected value of the city dropdown
+    public String getVilleSelectionnee() {
+        return page.locator(SELECT_VILLE).inputValue();
     }
 
     public String getHeadingText() {

@@ -39,7 +39,11 @@
             font-size: 14px;
         }
         button:hover { background-color: #004c99; }
-        #message { margin-top: 15px; font-weight: bold; color: green; }
+        #message { margin-top: 15px; font-weight: bold; }
+        /* Couleur du message selon le résultat de la validation */
+        .succes { color: green; }
+        .erreur { color: red; }
+        #message_alertes { margin-top: 4px; font-size: 13px; color: #555; }
         a { color: #0066cc; text-decoration: none; font-size: 13px; }
         a:hover { text-decoration: underline; }
     </style>
@@ -82,19 +86,34 @@
 
     <!-- Zone de texte résultante pour les tests d'assertion Playwright -->
     <p id="message"></p>
+    <!-- Comportement de la checkbox : message différent si cochée ou non -->
+    <p id="message_alertes"></p>
 </div>
 
 <script>
     function afficherResultat() {
         var nom = document.getElementById("input_nom").value.trim();
         var ville = document.getElementById("select_ville").value;
-        
-        if (nom === "") {
-            document.getElementById("message").innerText = "Veuillez remplir tous les champs obligatoires !";
+        var alertes = document.getElementById("checkbox_newsletter").checked;
+        var message = document.getElementById("message");
+        var messageAlertes = document.getElementById("message_alertes");
+
+        // Formulaire incomplet : message d'erreur en rouge
+        if (nom === "" || ville === "") {
+            message.innerText = "Veuillez remplir tous les champs obligatoires !";
+            message.className = "erreur";
+            messageAlertes.innerText = "";
             return;
         }
 
-        document.getElementById("message").innerText = "Inscription enregistree pour " + nom + " a " + ville + " !";
+        // Formulaire complet : message de succès en vert
+        message.innerText = "Inscription enregistree pour " + nom + " a " + ville + " !";
+        message.className = "succes";
+
+        // Comportement selon l'état de la checkbox
+        messageAlertes.innerText = alertes
+            ? "Vous recevrez nos alertes."
+            : "Vous ne recevrez pas d'alertes.";
     }
 </script>
 

@@ -71,6 +71,44 @@ Feature: Soumission du formulaire
     And coche la case "S'abonner aux alertes"
     And clique sur le bouton "Valider"
     Then le message "Inscription enregistree pour Alice a Berlin !" est affiché à l'écran
+    And le message est affiché en vert
+    And le message "Vous recevrez nos alertes." est affiché
+```
+
+---
+
+### TC2b : Soumission valide sans abonnement aux alertes (checkbox décochée)
+* **Priorité** : Haute
+* **Objectif** : Vérifier le comportement de la checkbox lorsqu'elle est cochée puis décochée.
+```gherkin
+Feature: Comportement de la checkbox
+  Scenario: L'utilisateur coche puis décoche la case des alertes
+    Given la page index.html est ouverte dans le navigateur
+    When l'utilisateur saisit "Bob" dans le champ nom d'utilisateur
+    And sélectionne la ville "Metz"
+    And coche la case "S'abonner aux alertes"
+    And décoche la case "S'abonner aux alertes"
+    And clique sur le bouton "Valider"
+    Then le message "Inscription enregistree pour Bob a Metz !" est affiché en vert
+    And le message "Vous ne recevrez pas d'alertes." est affiché
+    And la case "S'abonner aux alertes" est décochée
+```
+
+---
+
+### TC2c : Message d'erreur en rouge si le formulaire est incomplet
+* **Priorité** : Haute
+* **Objectif** : Vérifier qu'un formulaire incomplet affiche un message d'erreur en rouge.
+```gherkin
+Feature: Validation du formulaire
+  Scenario: Le nom d'utilisateur n'est pas renseigné
+    Given la page index.html est ouverte dans le navigateur
+    When l'utilisateur sélectionne la ville "Berlin"
+    And laisse le champ nom d'utilisateur vide
+    And clique sur le bouton "Valider"
+    Then le message "Veuillez remplir tous les champs obligatoires !" est affiché
+    And le message est affiché en rouge
+    And l'utilisateur reste sur la page index.html
 ```
 
 ---
@@ -101,6 +139,48 @@ Feature: Navigation de retour
     Then la page index.html s'affiche à nouveau
     And le titre de la page redevient "Formulaire Inscription"
 ```
+
+---
+
+### TC5 : Valeur par défaut de la liste déroulante des villes
+* **Priorité** : Moyenne
+* **Objectif** : Vérifier que "Paris" est sélectionné par défaut.
+```gherkin
+Feature: État initial du formulaire
+  Scenario: Paris est la ville sélectionnée par défaut
+    Given la page index.html est ouverte dans le navigateur
+    When l'utilisateur n'a pas modifié la liste déroulante
+    Then la ville sélectionnée est "Paris"
+```
+
+---
+
+### TC6 : Test paramétré de plusieurs combinaisons du formulaire
+* **Priorité** : Haute
+* **Objectif** : Tester le formulaire avec différentes combinaisons de nom, ville et checkbox (`@ParameterizedTest` + `@CsvSource`).
+```gherkin
+Feature: Soumission du formulaire avec différentes saisies
+  Scenario Outline: Soumission avec <nom>, <ville> et <alertes>
+    Given la page index.html est ouverte dans le navigateur
+    When l'utilisateur saisit "<nom>" dans le champ nom d'utilisateur
+    And sélectionne la ville "<ville>"
+    And met la case des alertes à <alertes>
+    And clique sur le bouton "Valider"
+    Then le message "<message>" est affiché en <couleur>
+    And le message d'alertes "<messageAlertes>" est affiché
+
+    Examples:
+      | nom      | ville  | alertes | message                                         | couleur | messageAlertes                  |
+      | Alice    | Paris  | true    | Inscription enregistree pour Alice a Paris !    | vert    | Vous recevrez nos alertes.      |
+      | Alice    | Berlin | false   | Inscription enregistree pour Alice a Berlin !   | vert    | Vous ne recevrez pas d'alertes. |
+      | Bob      | Metz   | true    | Inscription enregistree pour Bob a Metz !       | vert    | Vous recevrez nos alertes.      |
+      | Jean-Luc | Metz   | false   | Inscription enregistree pour Jean-Luc a Metz !  | vert    | Vous ne recevrez pas d'alertes. |
+      |          | Paris  | true    | Veuillez remplir tous les champs obligatoires ! | rouge   |                                 |
+      |          | Berlin | false   | Veuillez remplir tous les champs obligatoires ! | rouge   |                                 |
+      | (espaces)| Metz   | true    | Veuillez remplir tous les champs obligatoires ! | rouge   |                                 |
+```
+
+> Les assertions multiples d'un même test sont regroupées avec `assertAll` : en cas d'échec, JUnit indique toutes les vérifications qui ont échoué, et pas seulement la première.
 
 ---
 
