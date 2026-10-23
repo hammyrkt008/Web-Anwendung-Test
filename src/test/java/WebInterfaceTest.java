@@ -98,6 +98,7 @@ public class WebInterfaceTest extends PlaywrightAbstractTester {
      * NOTE: Implemented for the pair-programming part. Functional logic is ready,
      * but pending joint integration testing before activation.
      * -------------------------------------------------------------------------
+     * */
     @Test
     @DisplayName("TC2b - Valid submission without newsletter subscription")
     void tc2b_submissionWithoutNewsletter() {
@@ -120,7 +121,7 @@ public class WebInterfaceTest extends PlaywrightAbstractTester {
         assertEquals("Inscription enregistree pour Bob a Metz !", index.recupererMessage());
         org.junit.jupiter.api.Assertions.assertFalse(index.isNewsletterChecked());
     }
-    */
+    
     
     /*
      * TC2c: Submission failure due to missing mandatory username
